@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.container {
+    max-width: 1200px
+}
+
 .img-box {
     @apply relative h-40;
 }
@@ -16,4 +20,24 @@ img {
 
 .details.active {
     @apply border-green-500
+}
+
+.gallery-photo .img-box {
+    @apply h-full
+}
+
+.gallery-photo-details {
+    @apply absolute top-0 left-0 bg-slate-900/30 h-full w-full flex flex-col justify-between rounded-md cursor-pointer hover:bg-slate-900/40 transition-all
+}
+
+.gallery-photo-details-header {
+    @apply flex justify-end p-1
+}
+
+.gallery-photo-details-header span {
+    @apply py-2 px-4 backdrop-blur-lg bg-slate-950/70 rounded-md text-sm
+}
+
+.gallery-photo-details-footer {
+    @apply bg-slate-100 rounded-b-md px-2 py-1 text-black font-semibold
 }
