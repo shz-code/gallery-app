@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.img-box {
+    @apply relative h-40;
+}
+
+img {
+    @apply object-cover w-full h-full rounded-md;
+}
+
+.details {
+    @apply absolute top-0 left-0 bg-slate-900/50 h-full w-full flex justify-center items-center rounded-md border-4 border-transparent cursor-pointer hover:bg-slate-900/70 transition-all
+}
+
+.details.active {
+    @apply border-green-500
+}
