@@ -1,3 +1,6 @@
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+import OwlCarousel from "react-owl-carousel";
 import { useGetCategoryQuery } from "../../features/category/categorySlice";
 import { Error } from "../ui/Error";
 import Loader from "../ui/Loader";
@@ -11,14 +14,31 @@ export const Categories = () => {
   else if (!isLoading && isError) content = <Error msg={error.status} />;
   else if (!isLoading && !isError)
     content = data.map((item) => <Category key={item._id} item={item} />);
-
+  const options = {
+    responsive: {
+      0: {
+        items: 2,
+      },
+      768: {
+        items: 3,
+      },
+    },
+  };
   return (
     <>
-      <h2 className="text-4xl font-semibold">Browse Gallery Categories</h2>
-      {/* Gallery Categories */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
-        {content}
+      <div className="sm:flex items-end gap-4">
+        <h2 className="text-2xl sm:text-4xl font-semibold ">
+          Browse Gallery Categories{" "}
+        </h2>
+        <span className="text-xs sm:text-sm">slide for more</span>
       </div>
+      {/* Gallery Categories */}
+      {content.length && (
+        <OwlCarousel className="mt-4" margin={10} {...options}>
+          {content}
+        </OwlCarousel>
+      )}
+      {isLoading && content}
       {!isLoading && !isError && !content.length && (
         <Error msg="Nothing Found" />
       )}
