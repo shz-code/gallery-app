@@ -5,8 +5,9 @@ const Category = require("../models/category");
 router.route("/").get(async (req, res) => {
   try {
     const categories = await Category.find();
-    console.log(categories);
-    return res.send(categories);
+    setTimeout(() => {
+      return res.send(categories);
+    }, 2000);
   } catch (err) {
     return res.status(400).status("Bad Request");
   }

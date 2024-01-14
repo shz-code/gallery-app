@@ -13,4 +13,5 @@ dist-ssr
 *.local
 
 .env
-data.json
+category.json
+image.json
