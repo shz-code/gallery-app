@@ -1,6 +1,6 @@
 import apiSlice from "../api/apiSlice";
 
-const imageSlice = apiSlice.injectEndpoints({
+const imageApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getImageList: builder.query({
       query: () => "image",
@@ -8,4 +8,4 @@ const imageSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetImageListQuery } = imageSlice;
+export const { useGetImageListQuery } = imageApi;

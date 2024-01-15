@@ -1,8 +1,11 @@
 import { Formik } from "formik";
+import { useLoginMutation } from "../../features/auth/authApi";
 import Button from "../ui/Button";
 import FormInput from "../ui/FormInput";
 
 const Login = () => {
+  const [login] = useLoginMutation();
+
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -17,11 +20,9 @@ const Login = () => {
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+      onSubmit={async (values, { setSubmitting }) => {
+        await login(values);
+        setSubmitting(false);
       }}
     >
       {({
