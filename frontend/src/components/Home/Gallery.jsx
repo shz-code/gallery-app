@@ -8,7 +8,6 @@ import PhotoModal from "./PhotoModal";
 
 const Gallery = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalPhoto, setModalPhoto] = useState({});
   const { data, isLoading, isError, error } = useGetImageListQuery();
   const { search, selectedCategories } = useSelector((state) => state.filter);
 
@@ -29,12 +28,7 @@ const Gallery = () => {
           !selectedCategories.length
       )
       .map((item) => (
-        <Photo
-          key={item._id}
-          item={item}
-          setModalOpen={setModalOpen}
-          setModalPhoto={setModalPhoto}
-        />
+        <Photo key={item._id} item={item} setModalOpen={setModalOpen} />
       ));
 
   return (
@@ -47,9 +41,7 @@ const Gallery = () => {
         <Error msg="Nothing Found" />
       )}
       {/* Modal */}
-      {modalOpen && (
-        <PhotoModal setModalOpen={setModalOpen} modalPhoto={modalPhoto} />
-      )}
+      {modalOpen && <PhotoModal setModalOpen={setModalOpen} />}
     </div>
   );
 };

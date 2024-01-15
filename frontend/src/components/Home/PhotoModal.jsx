@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import Comments from "./Comments";
 import { NewComment } from "./NewComment";
 
-const PhotoModal = ({ setModalOpen, modalPhoto: photo }) => {
+const PhotoModal = ({ setModalOpen }) => {
+  const { photo } = useSelector((state) => state.modalPhoto);
   const { comments } = photo;
   const { email, name } = useSelector((state) => state.user);
 
@@ -36,7 +37,11 @@ const PhotoModal = ({ setModalOpen, modalPhoto: photo }) => {
         <div className="photoModal-footer border-t mt-8 pt-4 pb-4">
           <Comments comments={comments} />
           {email ? (
-            <NewComment name={name} />
+            <NewComment
+              name={name}
+              id={photo._id}
+              setModalOpen={setModalOpen}
+            />
           ) : (
             <div className="px-4 mt-4 ">
               <Link

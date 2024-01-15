@@ -7,7 +7,7 @@ const Comments = ({ comments }) => {
       <h3 className="text-2xl font-semibold py-2 px-4">Comments</h3>
       <div className="photoComments">
         {comments.length ? (
-          comments.map((item) => <Comment key={item.id} comment={item} />)
+          comments.map((item, index) => <Comment key={index} comment={item} />)
         ) : (
           <Error msg="No Comments" />
         )}

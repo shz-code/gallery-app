@@ -1,7 +1,11 @@
-const Photo = ({ item, setModalOpen, setModalPhoto }) => {
+import { useDispatch } from "react-redux";
+import { addModalPhoto } from "../../features/modalPhoto/modalPhotoSlice";
+
+const Photo = ({ item, setModalOpen }) => {
+  const dispatch = useDispatch();
   const setModal = () => {
     setModalOpen(true);
-    setModalPhoto(item);
+    dispatch(addModalPhoto(item));
   };
   return (
     <>

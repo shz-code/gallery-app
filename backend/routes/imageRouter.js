@@ -20,7 +20,7 @@ router.route("/:id").post(async (req, res) => {
     if (!image) res.status("404").send("Not Found");
     image.comments.push(req.body);
     image.save();
-    return res.status(200).send(image.comments);
+    return res.status(200).send(image);
   } catch (err) {
     return res.status(404).send("Not Found");
   }
