@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetImageListQuery } from "../../features/image/imageSlice";
 import { Error } from "../ui/Error";
 import Loader from "../ui/Loader";
 import Photo from "./Photo";
+import PhotoModal from "./PhotoModal";
 
 const Gallery = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalPhoto, setModalPhoto] = useState({});
   const { data, isLoading, isError, error } = useGetImageListQuery();
   const { search, selectedCategories } = useSelector((state) => state.filter);
 
@@ -24,7 +28,14 @@ const Gallery = () => {
           selectedCategories.includes(item.category) ||
           !selectedCategories.length
       )
-      .map((item) => <Photo key={item._id} item={item} />);
+      .map((item) => (
+        <Photo
+          key={item._id}
+          item={item}
+          setModalOpen={setModalOpen}
+          setModalPhoto={setModalPhoto}
+        />
+      ));
 
   return (
     <div className="mt-8 border-t pt-4">
@@ -34,6 +45,10 @@ const Gallery = () => {
       </div>
       {!isLoading && !isError && !content.length && (
         <Error msg="Nothing Found" />
+      )}
+      {/* Modal */}
+      {modalOpen && (
+        <PhotoModal setModalOpen={setModalOpen} modalPhoto={modalPhoto} />
       )}
     </div>
   );

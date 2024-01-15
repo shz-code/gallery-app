@@ -1,8 +1,12 @@
-const Photo = ({ item }) => {
+const Photo = ({ item, setModalOpen, setModalPhoto }) => {
+  const setModal = () => {
+    setModalOpen(true);
+    setModalPhoto(item);
+  };
   return (
     <>
       {/* gallery photo */}
-      <div className="gallery-photo mb-4">
+      <div className="gallery-photo mb-4" onClick={setModal}>
         <div className="img-box">
           <img src={item.url} alt={item.name} />
           <div className="gallery-photo-details">
