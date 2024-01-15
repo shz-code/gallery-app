@@ -1,10 +1,13 @@
 import { X } from "lucide-react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Comments from "./Comments";
 import { NewComment } from "./NewComment";
 
 const PhotoModal = ({ setModalOpen, modalPhoto: photo }) => {
   const { comments } = photo;
+  const { email } = useSelector((state) => state.user);
+
   const closeModal = () => {
     setModalOpen(false);
   };
@@ -32,15 +35,18 @@ const PhotoModal = ({ setModalOpen, modalPhoto: photo }) => {
         </div>
         <div className="photoModal-footer border-t mt-8 pt-4 pb-4">
           <Comments comments={comments} />
-          <NewComment />
-          <div className="px-4 mt-4 ">
-            <Link
-              to="/auth"
-              className="font-semibold bg-red-500 rounded-md p-2 block underline"
-            >
-              Sign in to do comment
-            </Link>
-          </div>
+          {email ? (
+            <NewComment />
+          ) : (
+            <div className="px-4 mt-4 ">
+              <Link
+                to="/auth"
+                className="font-semibold bg-red-500 rounded-md p-2 block underline"
+              >
+                Sign in to do comment
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

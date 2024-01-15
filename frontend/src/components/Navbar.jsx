@@ -1,10 +1,13 @@
+import { LogIn, LogOut } from "lucide-react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { userLoggedOut } from "../features/auth/authSlice";
 import { updateSearch } from "../features/filter/filterSlice";
 import Input from "./ui/Input";
 const Navbar = () => {
   const state = useSelector((state) => state.filter);
+  const { email } = useSelector((state) => state.user);
   const [search, setSearch] = useState(state.search);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,6 +18,26 @@ const Navbar = () => {
     navigate("/");
   };
 
+  const handleLogOut = () => {
+    dispatch(userLoggedOut());
+  };
+
+  let links = (
+    <>
+      <Link to="auth" className="navLinks" onClick={handleLogOut}>
+        <LogIn /> Login
+      </Link>
+    </>
+  );
+  if (email) {
+    links = (
+      <>
+        <Link className="navLinks" onClick={handleLogOut}>
+          <LogOut /> Logout
+        </Link>
+      </>
+    );
+  }
   return (
     <>
       <nav className="bg-slate-950 text-white">
@@ -33,7 +56,7 @@ const Navbar = () => {
               />
             </div>
             <ul className="flex justify-center lg:justify-start gap-4 text-gray-400">
-              <Link className="hover:text-white">Logout</Link>
+              {links}
             </ul>
           </div>
         </div>
