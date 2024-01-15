@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { updateSearch } from "../features/filter/filterSlice";
 import Input from "./ui/Input";
 const Navbar = () => {
   const state = useSelector((state) => state.filter);
   const [search, setSearch] = useState(state.search);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
     setSearch(e.target.value);
     dispatch(updateSearch(e.target.value));
+    navigate("/");
   };
 
   return (

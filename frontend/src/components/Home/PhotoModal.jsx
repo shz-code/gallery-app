@@ -8,8 +8,14 @@ const PhotoModal = ({ setModalOpen, modalPhoto: photo }) => {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  const handleClick = (e) => {
+    if (e.target.classList.contains("photoModal-container")) {
+      setModalOpen(false);
+    }
+  };
   return (
-    <div className="photoModal-container">
+    <div className="photoModal-container" onClick={handleClick}>
       <div className="photoModal">
         <div className="photoModal-header">
           <span className="bg-white text-black px-4 py-1 rounded-md font-bold">
@@ -29,7 +35,7 @@ const PhotoModal = ({ setModalOpen, modalPhoto: photo }) => {
           <NewComment />
           <div className="px-4 mt-4 ">
             <Link
-              to="/"
+              to="/auth"
               className="font-semibold bg-red-500 rounded-md p-2 block underline"
             >
               Sign in to do comment

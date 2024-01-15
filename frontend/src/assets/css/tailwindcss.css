@@ -87,3 +87,11 @@ img {
 .photoComments .comment {
     @apply px-3 py-2 rounded-lg border-4 border-blue-500 bg-gradient-to-tr from-slate-950 to-blue-900/50 backdrop-blur-lg
 }
+
+.authMode {
+    @apply w-full text-center bg-slate-800 rounded-md py-2 mb-2;
+}
+
+.authMode.active {
+    @apply bg-blue-800 hover:bg-blue-900 cursor-pointer;
+}
