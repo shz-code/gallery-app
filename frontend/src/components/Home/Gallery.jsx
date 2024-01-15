@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetImageListQuery } from "../../features/image/imageSlice";
-import { Error } from "../ui/Error";
+import Error from "../ui/Error";
 import Loader from "../ui/Loader";
 import Photo from "./Photo";
 import PhotoModal from "./PhotoModal";
