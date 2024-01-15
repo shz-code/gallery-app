@@ -13,4 +13,17 @@ router.route("/").get(async (req, res) => {
   }
 });
 
+router.route("/:id").post(async (req, res) => {
+  const id = req.params.id;
+  try {
+    const image = await Image.findById(id);
+    if (!image) res.status("404").send("Not Found");
+    image.comments.push(req.body);
+    image.save();
+    return res.status(200).send(image.comments);
+  } catch (err) {
+    return res.status(404).send("Not Found");
+  }
+});
+
 module.exports = router;
