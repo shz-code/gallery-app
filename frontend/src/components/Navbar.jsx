@@ -20,6 +20,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     dispatch(userLoggedOut());
+    localStorage.removeItem("auth");
   };
 
   let links = (

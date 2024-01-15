@@ -6,7 +6,7 @@ import { NewComment } from "./NewComment";
 
 const PhotoModal = ({ setModalOpen, modalPhoto: photo }) => {
   const { comments } = photo;
-  const { email } = useSelector((state) => state.user);
+  const { email, name } = useSelector((state) => state.user);
 
   const closeModal = () => {
     setModalOpen(false);
@@ -36,7 +36,7 @@ const PhotoModal = ({ setModalOpen, modalPhoto: photo }) => {
         <div className="photoModal-footer border-t mt-8 pt-4 pb-4">
           <Comments comments={comments} />
           {email ? (
-            <NewComment />
+            <NewComment name={name} />
           ) : (
             <div className="px-4 mt-4 ">
               <Link

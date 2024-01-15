@@ -1,10 +1,10 @@
 import Button from "../ui/Button";
 
-export const NewComment = () => {
+export const NewComment = ({ name }) => {
   return (
     <div className="newComment px-4 mt-4">
       <div className="newComment-header">
-        Commenting as <span>Shanto</span>
+        Commenting as <span className="font-bold font-mono">{name}</span>
       </div>
       <div className="newComment-body">
         <textarea
