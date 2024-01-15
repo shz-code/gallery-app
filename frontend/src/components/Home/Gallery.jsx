@@ -40,7 +40,7 @@ const Gallery = () => {
   return (
     <div className="mt-8 border-t pt-4">
       {/* Gallery Categories */}
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 mt-4">
+      <div className="columns-1 xs:columns-2 lg:columns-3 gap-4 mt-4">
         {content}
       </div>
       {!isLoading && !isError && !content.length && (
