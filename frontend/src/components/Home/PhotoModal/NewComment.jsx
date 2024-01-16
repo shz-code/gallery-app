@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAddCommentMutation } from "../../features/image/imageApi";
-import Button from "../ui/Button";
+import { useAddCommentMutation } from "../../../features/image/imageApi";
+import Button from "../../ui/Button";
 
 export const NewComment = ({ name, id }) => {
   const [comment, setComment] = useState({

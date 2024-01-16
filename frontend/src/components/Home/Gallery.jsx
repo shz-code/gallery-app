@@ -4,7 +4,7 @@ import { useGetImageListQuery } from "../../features/image/imageApi";
 import Error from "../ui/Error";
 import Loader from "../ui/Loader";
 import Photo from "./Photo";
-import PhotoModal from "./PhotoModal";
+import PhotoModal from "./PhotoModal/PhotoModal";
 
 const Gallery = () => {
   const [modalOpen, setModalOpen] = useState(false);

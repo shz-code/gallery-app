@@ -1,4 +1,4 @@
-import Error from "../ui/Error";
+import Error from "../../ui/Error";
 import Comment from "./Comment";
 
 const Comments = ({ comments }) => {
